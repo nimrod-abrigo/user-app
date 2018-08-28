@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Observable,Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewDetailsComponent } from './view-details/view-details.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @Component({
   selector: 'app-user',
@@ -12,13 +15,13 @@ export class UserComponent implements OnInit {
   users: Observable<any>;
   displayedtransColumns=['id','name', 'email', 'action'];
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, public dialog:MatDialog) { }
 
   ngOnInit() {
     this.getUsers();
   }
 
-  public getUsers(){
+  getUsers(){
     this.userSub = this.userService.getUsers()
     .subscribe(res=> { 
       this.users = res;
@@ -29,6 +32,31 @@ export class UserComponent implements OnInit {
       }
 
     );
+  }
+
+  viewUser(user){
+    console.log(user);
+    const dialogRef = this.dialog.open(ViewDetailsComponent, {
+      width: '250px',
+      data: {user: user}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
+    });
+  }
+
+  editUser(user){
+    const dialogRef = this.dialog.open(EditUserComponent, {
+      width: '250px',
+      data: {user: user}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
+    });
   }
 
 }

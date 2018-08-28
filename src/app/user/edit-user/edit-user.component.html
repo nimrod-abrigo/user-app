@@ -1,3 +1,13 @@
-<p>
-  edit-user works!
-</p>
+<!--<mat-form-field class="example-full-width">
+  <input matInput placeholder="id" [(ngModel)]="data.user.id">
+</mat-form-field>-->
+{{data.user|json}}
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="name" value="Sushi">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="email" [(ngModel)]="data.user.email">
+  </mat-form-field>
+</form>
