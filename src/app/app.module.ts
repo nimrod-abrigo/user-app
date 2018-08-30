@@ -3,7 +3,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatCheckboxModule, MatTableModule, MatTooltipModule, MatDialogModule, MatInputModule } from '@angular/material';
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -33,11 +33,13 @@ import {UserService} from './user.service';
     MatTableModule,
     MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   entryComponents: [
     ViewDetailsComponent,
-    EditUserComponent
+    EditUserComponent,
+    DeleteUserComponent
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

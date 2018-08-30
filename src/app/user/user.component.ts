@@ -4,6 +4,8 @@ import { Observable,Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-user',
@@ -13,6 +15,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 export class UserComponent implements OnInit {
   userSub: Subscription;
   users: Observable<any>;
+  userInfo:Observable<User>;
   displayedtransColumns=['id','name', 'email', 'action'];
 
   constructor(private userService:UserService, public dialog:MatDialog) { }
@@ -34,11 +37,11 @@ export class UserComponent implements OnInit {
     );
   }
 
-  viewUser(user){
-    console.log(user);
+  viewUser(id){
+    console.log(id);
     const dialogRef = this.dialog.open(ViewDetailsComponent, {
       width: '250px',
-      data: {user: user}
+      data: {id: id}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -49,13 +52,29 @@ export class UserComponent implements OnInit {
 
   editUser(user){
     const dialogRef = this.dialog.open(EditUserComponent, {
-      width: '250px',
+      width: '500px',
       data: {user: user}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      //this.animal = result;
+      if(result == "edit"){
+        this.viewUser(user.id);
+        this.getUsers();
+      }
+    });
+  }
+
+  deleteUser(id){
+    const dialogRef = this.dialog.open(DeleteUserComponent, {
+      width: '300px',
+      data:{id:id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result == "delete"){
+        this.getUsers();
+      }
     });
   }
 

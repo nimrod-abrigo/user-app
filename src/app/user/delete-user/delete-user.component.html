@@ -1,3 +1,10 @@
-<p>
-  delete-user works!
-</p>
+<div class = "container">
+  <h3 mat-dialog-title>Delete User</h3>
+  <mat-dialog-content>
+      Are you sure you want to delete user?
+    </mat-dialog-content>
+  <div mat-dialog-actions>
+    <button mat-button mat-raised-button color="primary" (click) = "onYesClick()">Yes</button>
+    <button mat-button (click)="onNoClick()" mat-raised-button color="warn" tabindex="-1">No</button>
+  </div>
+</div>
