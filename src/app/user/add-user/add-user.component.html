@@ -1,3 +1,15 @@
-<p>
-  add-user works!
-</p>
+<div class="container">
+    <h3 mat-dialog-title>Add User</h3>
+      <form (ngSubmit)="submitDetails()">
+        <mat-form-field class="txt-full-width">
+          <input matInput placeholder="name" [(ngModel)] = "name" name="name">
+        </mat-form-field>
+        <mat-form-field class="txt-full-width">
+          <input matInput placeholder="email" [(ngModel)] = "email" name="email">
+        </mat-form-field>
+        <div mat-dialog-actions>
+          <button mat-button mat-raised-button color="primary" type="submit">Save</button>
+          <button mat-button (click)="onNoClick()" mat-raised-button color="warn" tabindex="-1">Cancel</button>
+        </div>
+      </form>
+  </div>

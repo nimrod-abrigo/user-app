@@ -39,7 +39,8 @@ import {UserService} from './user.service';
   entryComponents: [
     ViewDetailsComponent,
     EditUserComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    AddUserComponent
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

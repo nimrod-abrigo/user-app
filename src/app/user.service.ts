@@ -34,7 +34,6 @@ export class UserService {
     let body = new HttpParams();
     body = body.set('name', user.name);
     body = body.set('email', user.email);
-      console.log("service: "+JSON.stringify(user));
       this._httpClient.put(this.API_URL+"/"+user.id,body,{headers: myheader}
       ).subscribe(
         data => {
@@ -44,6 +43,22 @@ export class UserService {
           console.log(err);
         }
       );
+  }
+
+  public addUser(user):void{
+    const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    let body = new HttpParams();
+    body = body.set('name', user.name);
+    body = body.set('email', user.email);
+    this._httpClient.post(this.API_URL,body,{headers: myheader})
+    .subscribe(
+      data => {
+        console.log(data);
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
   }
 
   public deleteUser(id):any{

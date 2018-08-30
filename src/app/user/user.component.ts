@@ -6,6 +6,7 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { User } from '../model/user';
+import { AddUserComponent } from './add-user/add-user.component';
 
 @Component({
   selector: 'app-user',
@@ -47,6 +48,20 @@ export class UserComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       //this.animal = result;
+    });
+  }
+
+  addUser(){
+    const dialogRef = this.dialog.open(AddUserComponent, {
+      width: '500px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result == "add"){
+        this.getUsers();
+      }
     });
   }
 
