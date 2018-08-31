@@ -22,17 +22,13 @@ export class EditUserComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.name = this.data.user.name;
-    this.email = this.data.user.email;
+    this.user.id = this.data.user.id;
+    this.user.name = this.data.user.name;
+    this.user.email = this.data.user.email;
     console.log(this.data);
   }
 
   submitDetails(){
-    this.user = { 
-      id: this.data.user.id,
-      name : this.name,
-      email : this.email
-    }
     this.userService.updateUser(this.user);
     this.dialogRef.close("edit");
   }

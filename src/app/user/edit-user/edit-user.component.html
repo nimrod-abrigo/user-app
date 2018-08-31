@@ -2,10 +2,10 @@
   <h3 mat-dialog-title>Edit User</h3>
     <form (ngSubmit)="submitDetails()">
       <mat-form-field class="txt-full-width">
-        <input matInput placeholder="name" [(ngModel)] = "name" name="name">
+        <input matInput placeholder="name" [(ngModel)] = "user.name" name="name">
       </mat-form-field>
       <mat-form-field class="txt-full-width">
-        <input matInput placeholder="email" [(ngModel)] = "email" name="email">
+        <input matInput placeholder="email" [(ngModel)] = "user.email" name="email">
       </mat-form-field>
       <div mat-dialog-actions>
         <button mat-button mat-raised-button color="primary" type="submit">Save</button>
